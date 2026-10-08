@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}{{ course.title }} | TechGuruFx Academy{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><span class="eyebrow">{{ course.get_category_display }}</span><h1>{{ course.title }}</h1><p>{{ course.description }}</p><a href="{% url 'register' %}" class="btn btn-primary rounded-pill px-5 mt-3">Enroll / Create Account</a></div></section>
+<section class="section-pad"><div class="container"><div class="row g-5"><div class="col-lg-8"><h2>Course lessons</h2>{% for lesson in course.lessons.all %}<div class="lesson-row"><span>{{ forloop.counter }}</span><div><h5>{{ lesson.title }}</h5><p>{{ lesson.content|truncatewords:25 }}</p></div></div>{% empty %}<p>No lessons have been added yet.</p>{% endfor %}</div><div class="col-lg-4"><div class="sidebar-card"><h4>Course overview</h4><p><i class="bi bi-clock me-2"></i>{{ course.duration }}</p><p><i class="bi bi-tag me-2"></i>₦{{ course.price|floatformat:0 }}</p><a href="{% url 'register' %}" class="btn btn-dark rounded-pill w-100">Join this course</a></div></div></div></div></section>
+{% endblock %}

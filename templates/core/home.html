@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}TechGuruFx Academy | Learn. Build. Trade. Grow.{% endblock %}
+{% block content %}
+<section class="hero-section">
+  <div class="container position-relative">
+    <div class="row align-items-center min-vh-75">
+      <div class="col-lg-7 py-5">
+        <span class="eyebrow"><i class="bi bi-stars me-2"></i>Build skills for the digital economy</span>
+        <h1 class="display-3 fw-900 mt-3">Learn. <span>Build.</span> Trade. Grow.</h1>
+        <p class="lead mt-4">Master practical technology and forex skills through guided training, real projects and mentorship at TechGuruFx Academy.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="{% url 'courses' %}" class="btn btn-primary btn-lg rounded-pill px-5">Explore Courses <i class="bi bi-arrow-right ms-2"></i></a>
+          <a href="{% url 'register' %}" class="btn btn-outline-dark btn-lg rounded-pill px-5">Join the Academy</a>
+        </div>
+        <div class="hero-trust mt-5"><i class="bi bi-check-circle-fill"></i> Practical learning &nbsp; <i class="bi bi-check-circle-fill"></i> Mentorship &nbsp; <i class="bi bi-check-circle-fill"></i> Portfolio projects</div>
+      </div>
+      <div class="col-lg-5 d-none d-lg-block">
+        <div class="hero-card">
+          <div class="floating-tag tag-one"><i class="bi bi-code-slash"></i> Tech Skills</div>
+          <div class="floating-tag tag-two"><i class="bi bi-graph-up-arrow"></i> Forex Skills</div>
+          <div class="hero-orb">
+                <img src="{% static 'images/hero-image.jpg' %}"
+                   alt="TechGuruFx Academy"
+                   class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+ <div class="container"><div class="row text-center g-4">
+  <div class="col-6 col-lg-3"><div class="stat-number">10+</div><div>Practical Courses</div></div>
+  <div class="col-6 col-lg-3"><div class="stat-number">100%</div><div>Project Focus</div></div>
+  <div class="col-6 col-lg-3"><div class="stat-number">1:1</div><div>Mentorship Approach</div></div>
+  <div class="col-6 col-lg-3"><div class="stat-number">24/7</div><div>Learning Access</div></div>
+ </div></div>
+</section>
+
+<section class="section-pad courses-section">
+ <div class="container">
+  <div class="section-heading text-center"><span>Our programs</span><h2>Explore our courses</h2><p>Choose a technology or forex pathway and build practical skills.</p></div>
+  <div class="row g-4 mt-2">
+   {% for course in courses %}
+   <div class="col-md-6 col-lg-4">
+    <div class="course-card h-100">
+      {% if course.image %}<img src="{{ course.image.url }}" class="course-img" alt="{{ course.title }}">{% else %}<div class="course-img placeholder-img"><i class="bi {% if course.category == 'forex' %}bi-bar-chart-line{% else %}bi-laptop{% endif %}"></i></div>{% endif %}
+      <div class="p-4"><span class="course-badge">{{ course.get_category_display }}</span><h4 class="mt-3">{{ course.title }}</h4><p>{{ course.description|truncatewords:20 }}</p><div class="d-flex justify-content-between small text-muted mb-3"><span><i class="bi bi-clock me-1"></i>{{ course.duration }}</span><strong>₦{{ course.price|floatformat:0 }}</strong></div><a href="{{ course.get_absolute_url }}" class="text-decoration-none fw-bold">View course <i class="bi bi-arrow-right"></i></a></div>
+    </div>
+   </div>
+   {% empty %}
+   <div class="col-12"><div class="empty-box">Add courses from Django Admin to display them here.</div></div>
+   {% endfor %}
+  </div>
+ </div>
+</section>
+
+<section class="why-section section-pad">
+ <div class="container"><div class="row align-items-center g-5">
+  <div class="col-lg-5"><span class="eyebrow">Why TechGuruFx?</span><h2 class="display-6 fw-900 mt-3">Education designed around real skills.</h2><p class="mt-3">We focus on learning that leads to action: build projects, practice concepts, receive feedback and develop a portfolio.</p><a href="{% url 'about' %}" class="btn btn-dark rounded-pill px-4 mt-3">Discover our story</a></div>
+  <div class="col-lg-7"><div class="row g-3">
+    <div class="col-sm-6"><div class="feature-card"><i class="bi bi-laptop"></i><h5>Practical Training</h5><p>Learn through hands-on projects and exercises.</p></div></div>
+    <div class="col-sm-6"><div class="feature-card"><i class="bi bi-person-check"></i><h5>Mentorship</h5><p>Get guidance while you build your skills.</p></div></div>
+    <div class="col-sm-6"><div class="feature-card"><i class="bi bi-briefcase"></i><h5>Career Focus</h5><p>Develop portfolio-ready work and professional habits.</p></div></div>
+    <div class="col-sm-6"><div class="feature-card"><i class="bi bi-people"></i><h5>Community</h5><p>Learn, collaborate and grow with other students.</p></div></div>
+  </div></div>
+ </div></div>
+</section>
+
+<section class="section-pad">
+ <div class="container"><div class="section-heading"><span>Student work</span><h2>Projects that prove the learning</h2></div>
+ <div class="row g-4 mt-2">
+ {% for project in projects %}
+ <div class="col-md-6 col-lg-4"><div class="project-card h-100">{% if project.image %}<img src="{{ project.image.url }}" alt="{{ project.title }}">{% else %}<div class="project-placeholder"><i class="bi bi-window-stack"></i></div>{% endif %}<div class="p-4"><small>{{ project.technology }}</small><h5 class="mt-2">{{ project.title }}</h5><p>{{ project.description|truncatewords:18 }}</p></div></div></div>
+ {% empty %}<div class="col-12"><div class="empty-box">Student projects added in Admin will appear here.</div></div>{% endfor %}
+ </div></div>
+</section>
+
+<section class="testimonial-section section-pad">
+ <div class="container"><div class="section-heading text-center"><span>Testimonials</span><h2>What students say</h2></div>
+ <div class="row g-4 mt-2">
+ {% for t in testimonials %}<div class="col-md-4"><div class="testimonial-card h-100"><div class="stars">★★★★★</div><p>“{{ t.message }}”</p><h6>{{ t.name }}</h6><small>{{ t.role }}</small></div></div>{% empty %}<div class="col-12"><div class="empty-box">Student testimonials added in Admin will appear here.</div></div>{% endfor %}
+ </div></div>
+</section>
+
+<section class="section-pad">
+ <div class="container"><div class="section-heading text-center"><span>Our people</span><h2>Meet the instructors</h2></div>
+ <div class="row g-4 mt-2">
+ {% for instructor in instructors %}<div class="col-md-4"><div class="instructor-card text-center">{% if instructor.photo %}<img src="{{ instructor.photo.url }}" alt="{{ instructor.name }}">{% else %}<div class="avatar-placeholder"><i class="bi bi-person"></i></div>{% endif %}<h5>{{ instructor.name }}</h5><p>{{ instructor.role }}</p><div class="small">{{ instructor.bio|truncatewords:20 }}</div></div></div>{% empty %}<div class="col-12"><div class="empty-box">Instructor profiles added in Admin will appear here.</div></div>{% endfor %}
+ </div></div>
+</section>
+
+<section class="cta-section">
+ <div class="container"><div class="row align-items-center"><div class="col-lg-8"><span class="eyebrow light">Start today</span><h2>Ready to build your next skill?</h2><p>Join TechGuruFx Academy and start learning with a practical, project-based approach.</p></div><div class="col-lg-4 text-lg-end"><a href="{% url 'register' %}" class="btn btn-light btn-lg rounded-pill px-5">Enroll Now</a></div></div></div>
+</section>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Contact | TechGuruFx Academy{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><span class="eyebrow">Contact us</span><h1>Let's talk about your learning goals.</h1><p>Have questions about courses, enrollment or the student portal? Send us a message.</p></div></section>
+<section class="section-pad"><div class="container"><div class="row g-5"><div class="col-lg-5"><h2>Get in touch</h2><div class="contact-item"><i class="bi bi-whatsapp"></i><div><b>WhatsApp</b><p>+234 80 355 57058</p></div></div><div class="contact-item"><i class="bi bi-telephone"></i><div><b>Phone</b><p>+234 90 450 20632</p></div></div><div class="contact-item"><i class="bi bi-envelope"></i><div><b>Email</b><p>info@techgurufxacademy.com</p></div></div><div class="contact-item"><i class="bi bi-geo-alt"></i><div><b>Location</b><p>Nigeria</p></div></div></div><div class="col-lg-7"><div class="form-card"><h3>Send a message</h3><form method="post">{% csrf_token %}{{ form.as_p }}<button class="btn btn-primary rounded-pill px-5">Send Message</button></form></div></div></div></div></section>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}About | TechGuruFx Academy{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><span class="eyebrow">About the academy</span><h1>Building practical skills for a changing world.</h1><p>TechGuruFx Academy combines technology education with forex training in one practical learning community.</p></div></section>
+<section class="section-pad"><div class="container"><div class="row g-5"><div class="col-lg-6"><span class="section-kicker">Our mission</span><h2>Turn learning into capability.</h2><p>Our mission is to provide practical, accessible and structured training that helps learners build useful technology and financial-market skills.</p></div><div class="col-lg-6"><span class="section-kicker">Our vision</span><h2>Create confident, capable learners.</h2><p>Our vision is to build a recognized academy that produces skilled, innovative and disciplined professionals ready for the digital economy.</p></div></div></div></section>
+<section class="soft-section section-pad"><div class="container"><div class="row align-items-center g-5"><div class="col-lg-4">
+    <div class="founder-box">
+        <img src="{% static 'images/founder.jpg' %}"
+             alt="Founder of TechGuruFx Academy"
+             class="img-fluid">
+    </div>
+</div><div class="col-lg-8"><span class="section-kicker">Founder</span><h2>Founder & Lead Instructor</h2><p>Meet the Founder
+
+Kunle — Founder, TechGuruFx Academy
+
+Kunle is a technology enthusiast, software engineer and web developer with a passion for helping people develop practical digital skills and create opportunities through technology.
+
+As the founder of TechGuruFx Academy, he is committed to building a learning community where students can acquire practical skills in technology, software development, artificial intelligence, web development and forex trading.
+
+His approach to education goes beyond theory. Through hands-on projects, guided learning, mentorship and continuous practice, TechGuruFx Academy helps students develop skills they can apply to real-world problems, professional careers and entrepreneurship.
+
+Kunle believes that with the right knowledge, consistent practice and proper mentorship, anyone can develop valuable skills and build a better future.
+
+His mission is simple: Learn. Build. Trade. Grow.</p></div></div></div></section>
+<section class="section-pad"><div class="container"><div class="section-heading text-center"><span>Our team</span><h2>Instructors</h2></div><div class="row g-4 mt-2">{% for i in instructors %}<div class="col-md-4"><div class="instructor-card text-center">{% if i.photo %}<img src="{{ i.photo.url }}" alt="{{ i.name }}">{% else %}<div class="avatar-placeholder"><i class="bi bi-person"></i></div>{% endif %}<h5>{{ i.name }}</h5><p>{{ i.role }}</p><small>{{ i.bio }}</small></div></div>{% empty %}<div class="col-12"><div class="empty-box">Add instructors from Django Admin.</div></div>{% endfor %}</div></div></section>
+{% endblock %}
