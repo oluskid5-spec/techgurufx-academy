@@ -7,7 +7,12 @@ h1,h2,h3,h4,h5,h6,.navbar-brand{font-family:Nunito,Inter,sans-serif}
 .btn-primary{background:#f6a21a;border-color:#f6a21a;color:#172033;font-weight:800}.btn-primary:hover{background:#df8d08;border-color:#df8d08;color:#172033}
 .hero-section{background:linear-gradient(135deg,#fff8ed 0%,#fff 60%);overflow:hidden}.min-vh-75{min-height:75vh}.hero-section h1 span{color:#f6a21a}.hero-section .lead{color:#667085;max-width:650px}.eyebrow,.section-kicker{display:inline-block;text-transform:uppercase;letter-spacing:2px;font-size:.78rem;font-weight:800;color:#f6a21a}.eyebrow.light{color:#ffe2ad}.hero-trust{font-size:.9rem;color:#667085}.hero-trust i{color:#f6a21a}
 .hero-card{height:470px;background:#172033;border-radius:40px;position:relative;box-shadow:0 30px 70px rgba(23,32,51,.2)}
-
+.site-logo {
+    height: 55px;
+    width: auto;
+    max-width: 220px;
+    object-fit: contain;
+}
 
 /* Hero image */
 .hero-orb {
